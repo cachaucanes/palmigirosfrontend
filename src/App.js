@@ -1,25 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+
 import './App.css';
+import Navigation from './components/Navigation';
+import DepartmentList from './components/DepartmentList';
+import Main from './components/Main';
+import DepartmentCreate from './components/DepartmentCreate';
+import City from './components/City';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navigation/>
+      <div className="container p-4">
+      <Route path="/" exact component={Main} />
+      <Route path="/department-list" component={DepartmentList} />
+      <Route path="/department-create" component={DepartmentCreate} />
+      <Route path="/department-edit/:id" component={DepartmentCreate} />
+      <Route path="/city-list" component={City} />
+      </div>
+    </Router>
   );
 }
 
