@@ -34,9 +34,11 @@ export default class DepartmentCreate extends Component {
       created_at: this.state.created_at
     }            
     if(this.state.edit){
-      await axios.put(this.state.url + '/' + this.state.id, newDepart)
+      const result = await axios.put(this.state.url + '/' + this.state.id, newDepart)
+      window.M.toast({html: result.data.message, classes: 'blue accent-2'})    
     }else{
-      await axios.post(this.state.url, newDepart)
+      const result = await axios.post(this.state.url, newDepart)
+      window.M.toast({html: result.data.message, classes: 'rounded light-blue darken-4 title'})
     }
     this.props.history.push('/department-list'); //Para no recargar la pagina        
   }
@@ -47,7 +49,7 @@ export default class DepartmentCreate extends Component {
         <h1 className="title">Register Department</h1>
         <form onSubmit={this.SendDepartment}>
           <div className="form-group">
-            <input value={this.state.departamento} onChange={this.onChange} placeholder="Name department" type="text" className="form-control" />
+            <input autoFocus value={this.state.departamento} onChange={this.onChange} placeholder="Name department" type="text" className="form-control" />
           </div>
           <div className="form-group">
             <button type="submit" className="btn btn-primary">Save</button>

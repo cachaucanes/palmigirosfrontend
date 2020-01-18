@@ -7,6 +7,11 @@
   pointer-events: none;
 }
 
+.collapseBody1 {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
